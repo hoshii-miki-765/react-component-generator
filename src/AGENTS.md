@@ -6,7 +6,7 @@ This React client collects provider and prompt input, requests generated code fr
 
 ## Constraints
 
-- Keep API-key entry ephemeral. The hook sends it only in the `/api/generate` request body when supplied (`hooks/useComponentGenerator.ts:23-27`); do not persist it to storage.
+- Persist the user-entered API key in browser `localStorage` so it survives refreshes. The hook sends it only in the `/api/generate` request body when supplied; never expose environment API-key values to storage or API responses.
 - Preserve generated component ordering: successful results are prepended in `hooks/useComponentGenerator.ts:35-43`.
 - Keep `LiveProvider` in `noInline` mode. Server normalization supplies its required `render(...)` call (`components/LivePreview.tsx:14`).
 
